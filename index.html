@@ -5,11 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property Alerts</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #ffffff; }
-        iframe { border: none; width: 100%; height: 100%; position: fixed; top: 0; left: 0; }
+        /* Force the core body container to sit flush edge-to-edge */
+        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #ffffff; position: relative; }
+        
+        /* Render the running application underneath the mask layer */
+        iframe { border: none; width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 1; }
+        
+        /* Create a structural shield over the bottom right corner */
+        .branding-shield {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 250px;       /* Spans over the exact footprint of the host widget */
+            height: 45px;       /* Covers the height profile of the toolbar */
+            background-color: #ffffff; /* Matches your core UI background perfectly */
+            z-index: 999999;    /* Floats directly over top of the iframe contents */
+            pointer-events: auto; /* Solidifies the mouse interception wall */
+        }
     </style>
 </head>
 <body>
+
+    <div class="branding-shield"></div>
+
     <iframe src="https://honolulu-property-alerts.streamlit.app/?embed=true&embed_options=hide_loading_screen"></iframe>
+
 </body>
 </html>
