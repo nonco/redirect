@@ -11,13 +11,14 @@
         /* Render the running application underneath the mask layer */
         iframe { border: none; width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 1; }
         
-        /* Create a structural shield over the bottom right corner */
+        /* Create a full-width structural shield across the entire bottom edge */
         .branding-shield {
             position: fixed;
+            left: 0;
             right: 0;
             bottom: 0;
-            width: 250px;       /* Spans over the exact footprint of the host widget */
-            height: 45px;       /* Covers the height profile of the toolbar */
+            width: 100%;        /* Stretches edge-to-edge to block the entire footer bar */
+            height: 50px;       /* Covers the full vertical height profile of the banner */
             background-color: #ffffff; /* Matches your core UI background perfectly */
             z-index: 999999;    /* Floats directly over top of the iframe contents */
             pointer-events: auto; /* Solidifies the mouse interception wall */
